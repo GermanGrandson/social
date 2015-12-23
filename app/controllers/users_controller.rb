@@ -12,6 +12,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if
       @user.save #if a successful save
+      log_in(@user) #calling log_in METHOD in Session helper
       flash[:success] = "Welcome to the Sample App!"
       redirect_to @user
     else
