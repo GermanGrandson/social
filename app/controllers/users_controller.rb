@@ -30,7 +30,7 @@ before_action :admin_user, only: :destroy
   end
 
   def edit
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id]) #No longer needed because the correct_user before filter defines @user
   end
 
   def update
@@ -65,9 +65,7 @@ private
 
   def correct_user
     @user = User.find(params[:id])
-    unless @user == current_user
-    redirect_to(root_url)
-    end
+    redirect_to(root_url) unless @user == current_user?(@user)
   end
 
   def admin_user

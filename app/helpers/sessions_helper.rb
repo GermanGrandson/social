@@ -53,4 +53,8 @@ module SessionsHelper
     session[:forwarding_url] = request.url if request.get?
   end
 
+  def current_user?(puppy)
+    puppy == current_user #declaring puppy is equal to @current_user which is being called from the current_user method.
+  end
+
 end
